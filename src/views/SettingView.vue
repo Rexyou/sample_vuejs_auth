@@ -83,7 +83,7 @@
   import '../../node_modules/vue-toast-notification/dist/theme-sugar.css';
 
   const authStore = useAuthStore()
-  // authStore.userInfo()
+  authStore.userInfo()
 
   let userInfo = authStore.userDetail
   console.log(userInfo)
