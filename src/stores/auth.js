@@ -19,6 +19,8 @@ const displaySuccess = (message) => {
     })
 }
 
+const app_url = "https://646e-2001-f40-908-f8f-f89f-641e-4f13-94cc.ngrok-free.app";
+
 export const useAuthStore = defineStore('auth', {
     state: ()=> ({
         authUser: null,
@@ -39,7 +41,7 @@ export const useAuthStore = defineStore('auth', {
 
             try {
             
-                await axios.post('https://646e-2001-f40-908-f8f-f89f-641e-4f13-94cc.ngrok-free.app/api/employee/login', { username: data.username, code: data.password, type: data.type })
+                await axios.post(`${app_url}/api/employee/login`, { username: data.username, code: data.password, type: data.type })
                 .then((response)=> {
                     this.authUser = response.data.data
                     this.lockButton = false
@@ -78,7 +80,7 @@ export const useAuthStore = defineStore('auth', {
 
             const token = this.authUser.token;
 
-            const response = await axios.post('http://127.0.0.1:8001/api/logout', {}, {
+            const response = await axios.post(`${app_url}/api/logout`, {}, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -97,7 +99,7 @@ export const useAuthStore = defineStore('auth', {
 
             const token = this.authUser.token
 
-            await axios.get('http://127.0.0.1:8001/api/employee/profile', {
+            await axios.get(`${app_url}/api/employee/profile`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -116,7 +118,7 @@ export const useAuthStore = defineStore('auth', {
 
             try {
             
-                await axios.post('http://127.0.0.1:8001/api/employee/register', data)
+                await axios.post(`${app_url}/api/employee/register`, data)
                 .then((response)=> {
                     this.authUser = response.data.data
                     this.lockButton = false
@@ -160,7 +162,7 @@ export const useAuthStore = defineStore('auth', {
 
             try {
 
-                const response = await axios.post('http://127.0.0.1:8001/api/employee/update-profile', data, {
+                const response = await axios.post(`${app_url}/api/employee/update-profile`, data, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
