@@ -82,7 +82,8 @@ export const useAuthStore = defineStore('auth', {
 
             const response = await axios.post(`${app_url}/api/logout`, {}, {
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`,
+                    "ngrok-skip-browser-warning":"any"
                 }
             })
             .catch((error)=> {
@@ -99,9 +100,10 @@ export const useAuthStore = defineStore('auth', {
 
             const token = this.authUser.token
 
-            await axios.get(`${app_url}/api/employee/profile`, {
+            const sample = await axios.get(`${app_url}/api/employee/profile`, {
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`,
+                    "ngrok-skip-browser-warning":"any"
                 }
             })
             .then((response)=> {
@@ -110,7 +112,6 @@ export const useAuthStore = defineStore('auth', {
             .catch((error)=> {
                 console.log(error)
             })
-
 
         },
         async userRegister(data) {
@@ -164,7 +165,8 @@ export const useAuthStore = defineStore('auth', {
 
                 const response = await axios.post(`${app_url}/api/employee/update-profile`, data, {
                     headers: {
-                        'Authorization': `Bearer ${token}`
+                        'Authorization': `Bearer ${token}`,
+                        "ngrok-skip-browser-warning":"any"
                     }
                 })
                 .then((response)=> {
