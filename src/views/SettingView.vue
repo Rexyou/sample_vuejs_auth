@@ -86,6 +86,7 @@
   // authStore.userInfo()
 
   let userInfo = authStore.userDetail
+  console.log(userInfo)
 
   const controller = reactive({
     edit: false
